@@ -1,26 +1,43 @@
 #!/bin/bash
 ##################
+### Purpose of this program
+##################
+
+##################
+# example of use
+##################
+### sh /folder/with/the/program/Folder_containing_sequences_2_Quality_Control_graphs.sh -i /folder/with/your/inputfiles/ -x .fastq.gz -o /output/folder -t 6 -l /folder/for/your/logs
+##################
 # Installing required programs
 ##################
-# apt install fastqc # Maybe your would need to actualize your java version
+# apt install fastqc # Maybe your JAVA would be upgraded
 
 #################
 ## Arguments given by the user
 ################# 
- 
-while getopts ":a:z:h" opt; do
+while getopts ":i:x:o:t:h" opt; do
   case $opt in
     h)
-      echo "Usage: $(basename $0) [-z] [-a /some/path]"
-      echo "Explaining acronyms: -a = alahala, -z = bubulubu, -h = help"
+      echo "Usage: $(basename $0) [-i /input/folder/*fastq.gz] [-x .fastq.gz] [-o /output/folder/] [-t 6]"
+      echo "Explaining acronyms: -i = input folder *fastq.gz -x extension of your files -o = output folder , -t = number of threads to be used for the current run, -h = help"
+      echo "Note 1/2: In -x argument, you can change *fastq.gz for *.fastq or it also accepts sam, bam, etc"
+      echo "Note 2/2: In -t argument, you can change for a different number of cores / threads"
       ;;
-    a)
-      echo "-a was triggered, Parameter: $OPTARG" >&2   
-        alahala=$OPTARG
+    i)
+      echo "-i option was used, with the following input: $OPTARG" >&2   
+         inputfiles=$OPTARG
       ;;
-    z)
-      echo "-z was triggered, Parameter: $OPTARG" >&2   
-         zulu=$OPTARG
+    x)
+      echo "-x option was used, with the following input: $OPTARG" >&2   
+         extension_of_your_files=$OPTARG
+      ;;
+    o)
+      echo "-o option was used, with the following input: $OPTARG" >&2   
+        youroutputfolder=$OPTARG
+      ;;
+    t)
+      echo "-t option was used, with the following input: $OPTARG" >&2   
+         NumberOfThreads=$OPTARG
       ;;
     \?)
       echo "Invalid option: -$OPTARG" >&2
@@ -33,26 +50,15 @@ while getopts ":a:z:h" opt; do
   esac
 done
 
-echo  "hallo"
-
-
 ###################
-##
+## The program starts
 ###################
-
-
-
-# youroutputfolder=
-# yourlogsfolder=
 # inputfiles=
-#  # Change *.gz , *.fastq , according to your files extension (it also accepts bam, sam , etc )
-# you could add the argumen "-t 6" to fastqc to use 6 threads and speed up the process
+# youroutputfolder= 
+# yourlogsfolder=
+# NumberOfThreads=
 
-####mkdir -p $youroutputfolder
-####mkdir -p $yourlogsfolder # hint for choosing a name: youroutputfolder_logs
+mkdir -p $youroutputfolder
 
-
-# lets organize the parameters with getopts https://wiki.bash-hackers.org/howto/getopts_tutorial
-
-####fastqc *.fastq.gz -t 6 -o $youroutputfolder &> $yourlogsfolder
+fastqc $inputfiles/*$extension_of_your_files -o $youroutputfolder -t 6
 
