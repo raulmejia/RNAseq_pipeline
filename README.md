@@ -5,7 +5,7 @@ This pipe line is aimed to analyse RNAseq data, in a modular and clear way.
 ### Practical sequence of commands
 ---
 ##### Quality control 
-Looking exploring the raw reads with fastq
+Exploring the raw reads with fastqc
 
 ```mkdir -p  /output/folder```  
 
