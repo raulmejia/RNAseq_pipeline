@@ -15,3 +15,7 @@ Exploring the raw reads with fastqc
 
 
 [Zeichnung.pdf](https://github.com/raulmejia/RNAseq_pipeline/files/8232880/Zeichnung.pdf)
+
+
+![Zeichnung](https://user-images.githubusercontent.com/6841870/157890805-445f29d2-a342-4c0c-a3fa-d7cb665b8b52.svg)
+
