@@ -2,7 +2,8 @@
 ##################
 ### Purpose of this program
 ##################
-# look at reads through the fastqc program
+# takes as input a folder with fastqc results and retrieves multiqc reports
+# https://multiqc.info/ and https://multiqc.info/docs/
 
 ##################
 # example of use
@@ -19,7 +20,7 @@
 while getopts ":i:x:o:t:h" opt; do
   case $opt in
     h)
-      echo "Usage: $(basename $0) [-i /input/folder] [-x .fastq.gz] [-o /output/folder/] [-t 6]"
+      echo "Usage: $(basename $0) [-i /input/folder/*fastq.gz] [-x .fastq.gz] [-o /output/folder/] [-t 6]"
       echo "Explaining acronyms: -i = input folder *fastq.gz -x extension of your files -o = output folder , -t = number of threads to be used for the current run, -h = help"
       echo "Note 1/2: In -x argument, you can change *fastq.gz for *.fastq or it also accepts sam, bam, etc"
       echo "Note 2/2: In -t argument, you can change for a different number of cores / threads"

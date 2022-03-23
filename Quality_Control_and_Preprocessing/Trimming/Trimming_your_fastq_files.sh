@@ -2,16 +2,17 @@
 ##################
 ### Purpose of this program
 ##################
-# look at reads through the fastqc program
+# trimming your fastq files
 
 ##################
 # example of use
 ##################
-### sh /folder/with/the/program/Folder_containing_sequences_2_Quality_Control_graphs.sh -i /folder/with/your/inputfiles -x .fastq.gz -o /output/folder -t 6 &> /path/for/your/logs/Errors_in_this_run.logs
+### sh
+
 ##################
 # Installing required programs
 ##################
-# apt install fastqc # Maybe your JAVA would be upgraded
+# 
 
 #################
 ## Arguments given by the user
@@ -59,6 +60,6 @@ done
 # yourlogsfolder=
 # NumberOfThreads=
 
-mkdir -p $youroutputfolder
+#mkdir -p $youroutputfolder
 
-fastqc $inputfiles/*$extension_of_your_files -o $youroutputfolder -t $NumberOfThreads
+# fastqc $inputfiles/*$extension_of_your_files -o $youroutputfolder -t $NumberOfThreads
